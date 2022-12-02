@@ -1,14 +1,33 @@
 package com.girichevvasiliy.musicplayer;
 
-public class MusicPlayer {
-    private Music music;
+import lombok.*;
 
-    public MusicPlayer(Music music) {
-        this.music = music;
-    }
-    public void musicPlayback(){
-       String i =  music.getClass().getName();
-        String[] musisType = i.split("\\.");
-        System.out.println("Плеер запущен, выбран жанр: " + "\""+ musisType[musisType.length-1] + "\"," + " сейчас проиграется: " + music.playSong());
+import java.util.ArrayList;
+import java.util.List;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+public class MusicPlayer {
+
+    @NonNull
+    /*Подключу Lombok, для работы с классами*/
+    private List<Music> musicList = new ArrayList<>();
+    private String name;
+    private int volume;
+
+    /* public MusicPlayer(Music music) {
+         this.music = music;
+     }*/
+    public void playMusic() {
+        for (Music music : musicList) {
+            String i = music.getClass().getName();
+            String[] musisType = i.split("\\.");
+            System.out.println("*****************************************************************************************************************");
+            System.out.println("Плеер " + "\"" + getName() + "\"" + " запущен, выбран жанр: " + "\"" + musisType[musisType.length - 1] + "\"," + " сейчас проиграется: " + music.playSong());
+            System.out.println("Громкость: " + getVolume() + "%");
+            System.out.println("*****************************************************************************************************************");
+        }
     }
 }
