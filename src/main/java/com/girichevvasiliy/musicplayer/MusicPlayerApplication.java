@@ -16,7 +16,6 @@ public class MusicPlayerApplication {
 		// Тут мы создаем объекты при помощи спринга в xml - Зависимость через конструктор
 		MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
 		musicPlayer.playMusic();
-
 		context.close();
 	}
 
