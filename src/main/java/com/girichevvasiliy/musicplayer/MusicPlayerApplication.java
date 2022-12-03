@@ -23,6 +23,7 @@ public class MusicPlayerApplication {
 		musicPlayer1.playMusic();
 		System.out.println("_________________________________");
 		System.out.println(musicPlayer.getName());
+
 		context.close();
 	}
 
