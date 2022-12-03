@@ -8,15 +8,19 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
         <context:property-placeholder location="classpath:musicPlayer.properties"/>
 <bean id="musicBean"
-      class="com.girichevvasiliy.musicplayer.HouseMusic">
+      class="com.girichevvasiliy.musicplayer.HouseMusic"
+      scope="prototype"
+      factory-method="getHouseMusic">
 </bean>
 
     <bean id="musicBean1"
-          class="com.girichevvasiliy.musicplayer.ClassicalMusic">
+          class="com.girichevvasiliy.musicplayer.ClassicalMusic"
+    scope="singleton">
     </bean>
 
     <bean id="musicBean2"
-          class="com.girichevvasiliy.musicplayer.RockMusic">
+          class="com.girichevvasiliy.musicplayer.RockMusic"
+    scope="prototype">
     </bean>
 
 
@@ -39,7 +43,8 @@
 
     <!-- // 3. Создание через setter коллекции-->
         <bean id="musicPlayer"
-            class="com.girichevvasiliy.musicplayer.MusicPlayer">
+            class="com.girichevvasiliy.musicplayer.MusicPlayer"
+            scope="prototype">
             <property name="musicList">
                 <list value-type="com.girichevvasiliy.musicplayer.Music">
                     <ref bean="musicBean"/>

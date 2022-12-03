@@ -12,11 +12,28 @@ public class MusicPlayerApplication {
 		/*Music music = context.getBean("musicBean", Music.class);
 		MusicPlayer musicPlayer = new MusicPlayer(music);
 		musicPlayer.playMusic();*/
-
+/*
 		// Тут мы создаем объекты при помощи спринга в xml - Зависимость через конструктор
 		MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
 		musicPlayer.playMusic();
+		musicPlayer.playMusic();
 
+		MusicPlayer musicPlayer1 = context.getBean("musicPlayer", MusicPlayer.class);
+		musicPlayer1.setVolume(77);
+		musicPlayer1.setName("AIMP");
+		musicPlayer1.playMusic();*/
+
+		ClassicalMusic classicalMusic = context.getBean("musicBean1", ClassicalMusic.class);
+		System.out.println(classicalMusic.playSong());
+
+		ClassicalMusic classicalMusic1 = context.getBean("musicBean1", ClassicalMusic.class);
+		System.out.println(classicalMusic1.playSong());
+		classicalMusic1.setNameSong("Antonio Stradivarius");
+		System.out.println("classicalMusic1: " + classicalMusic1.getNameSong());
+		System.out.println("classicalMusic: " + classicalMusic.getNameSong());
+		classicalMusic.setNameSong("Bah");
+		System.out.println("classicalMusic1: " + classicalMusic1.getNameSong());
+		System.out.println("classicalMusic: " + classicalMusic.getNameSong());
 		context.close();
 	}
 
