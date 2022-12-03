@@ -23,22 +23,6 @@ public class MusicPlayerApplication {
 		musicPlayer1.playMusic();
 		System.out.println("_________________________________");
 		System.out.println(musicPlayer.getName());
-		// проверим черри пик
-		Music music3 = context.getBean("rockMusic", Music.class);
-		MusicPlayer musicPlayer3 = context.getBean("musicPlayer", MusicPlayer.class);
-		musicPlayer3.setName("AIMP");
-		musicPlayer3.setVolume(22);
-		musicPlayer3.getMusicList().add(music3);
-		musicPlayer3.playMusic();
-		musicPlayer3.playMusic();
-		Music music4 = context.getBean("rockMusic", Music.class);
-		MusicPlayer musicPlayer4 = context.getBean("musicPlayer", MusicPlayer.class);
-		musicPlayer4.setName("AIMP");
-		musicPlayer4.setVolume(22);
-		musicPlayer4.getMusicList().add(music3);
-		musicPlayer4.playMusic();
-		musicPlayer4.playMusic();
-		// проверим черри пик
 		context.close();
 	}
 
