@@ -31,6 +31,13 @@ public class MusicPlayerApplication {
 		musicPlayer3.getMusicList().add(music3);
 		musicPlayer3.playMusic();
 		musicPlayer3.playMusic();
+		Music music4 = context.getBean("rockMusic", Music.class);
+		MusicPlayer musicPlayer4 = context.getBean("musicPlayer", MusicPlayer.class);
+		musicPlayer4.setName("AIMP");
+		musicPlayer4.setVolume(22);
+		musicPlayer4.getMusicList().add(music3);
+		musicPlayer4.playMusic();
+		musicPlayer4.playMusic();
 		// проверим черри пик
 		context.close();
 	}
