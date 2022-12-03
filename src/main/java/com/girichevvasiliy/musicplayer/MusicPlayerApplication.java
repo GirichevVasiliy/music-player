@@ -34,6 +34,7 @@ public class MusicPlayerApplication {
 		classicalMusic.setNameSong("Bah");
 		System.out.println("classicalMusic1: " + classicalMusic1.getNameSong());
 		System.out.println("classicalMusic: " + classicalMusic.getNameSong());
+
 		context.close();
 	}
 
