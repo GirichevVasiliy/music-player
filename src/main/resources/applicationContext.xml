@@ -7,53 +7,6 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
         <context:property-placeholder location="classpath:musicPlayer.properties"/>
-<bean id="musicBean"
-      class="com.girichevvasiliy.musicplayer.HouseMusic"
-      scope="prototype"
-      factory-method="getHouseMusic">
-</bean>
-
-    <bean id="musicBean1"
-          class="com.girichevvasiliy.musicplayer.ClassicalMusic"
-    scope="singleton">
-    </bean>
-
-    <bean id="musicBean2"
-          class="com.girichevvasiliy.musicplayer.RockMusic"
-    scope="prototype">
-    </bean>
-
-
- <!-- // 1. Создание через конструктор-->
-  <!--  <bean id="musicPlayer"
-            class="com.girichevvasiliy.musicplayer.MusicPlayer">
-            <constructor-arg ref="musicBean"/>  // строка ref="musicBean" это ссылка на нужный объект для конструктора MusicPlayer musicPlayer = new MusicPlayer(music - это он);
-    </bean>-->
-
-
-    <!-- // 2. Создание через setter-->
-  <!--    <bean id="musicPlayer"
-           class="com.girichevvasiliy.musicplayer.MusicPlayer">
-          <property name="music" ref="musicBean"/> &lt;!&ndash;name="music" это сеттер setMusic для поля,
-                                                    private Music music, класса MusicPlayer. Spring знает что это сеттер и
-                                                     отметает слово Set остается только Music, с маленькой буквы: music)&ndash;&gt;
-          <property name="name" value="${musicPlayer.name}"/> &lt;!&ndash;Полю name задали имя из файла musicPlayer.properties&ndash;&gt;
-          <property name="volume" value="${musicPlayer.volume}"/> &lt;!&ndash;Полю volume назначили int значение из файла musicPlayer.properties&ndash;&gt;
-      </bean>-->
-
-    <!-- // 3. Создание через setter коллекции-->
-        <bean id="musicPlayer"
-            class="com.girichevvasiliy.musicplayer.MusicPlayer"
-            scope="prototype">
-            <property name="musicList">
-                <list value-type="com.girichevvasiliy.musicplayer.Music">
-                    <ref bean="musicBean"/>
-                    <ref bean="musicBean1"/>
-                    <ref bean="musicBean2"/>
-                </list>
-            </property>
-           <property name="name" value="${musicPlayer.name}"/>
-           <property name="volume" value="${musicPlayer.volume}"/>
-       </bean>
+    <context:component-scan base-package="com.girichevvasiliy.musicplayer"/>
 
 </beans>
