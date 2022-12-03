@@ -1,6 +1,7 @@
 package com.girichevvasiliy.musicplayer;
 
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,17 +10,17 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
+@Component
 public class MusicPlayer {
-
     @NonNull
     /*Подключу Lombok, для работы с классами*/
     private List<Music> musicList = new ArrayList<>();
     private String name;
     private int volume;
 
-    /* public MusicPlayer(Music music) {
-         this.music = music;
-     }*/
+     public MusicPlayer(Music music) {
+         musicList.add(music);
+     }
     public void playMusic() {
         for (Music music : musicList) {
             String i = music.getClass().getName();
