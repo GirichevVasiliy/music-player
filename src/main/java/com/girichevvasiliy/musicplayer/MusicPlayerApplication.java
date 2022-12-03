@@ -8,33 +8,21 @@ public class MusicPlayerApplication {
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-		// 1. Тут мы явно создаем объекты  без участия спринга
-		/*Music music = context.getBean("musicBean", Music.class);
-		MusicPlayer musicPlayer = new MusicPlayer(music);
-		musicPlayer.playMusic();*/
-/*
-		// Тут мы создаем объекты при помощи спринга в xml - Зависимость через конструктор
+		Music music = context.getBean("classicalMusic", Music.class);
 		MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-		musicPlayer.playMusic();
+		musicPlayer.getMusicList().add(music);
 		musicPlayer.playMusic();
 
+		Music music1 = context.getBean("rockMusic", Music.class);
 		MusicPlayer musicPlayer1 = context.getBean("musicPlayer", MusicPlayer.class);
-		musicPlayer1.setVolume(77);
 		musicPlayer1.setName("AIMP");
-		musicPlayer1.playMusic();*/
-
-		ClassicalMusic classicalMusic = context.getBean("musicBean1", ClassicalMusic.class);
-		System.out.println(classicalMusic.playSong());
-
-		ClassicalMusic classicalMusic1 = context.getBean("musicBean1", ClassicalMusic.class);
-		System.out.println(classicalMusic1.playSong());
-		classicalMusic1.setNameSong("Antonio Stradivarius");
-		System.out.println("classicalMusic1: " + classicalMusic1.getNameSong());
-		System.out.println("classicalMusic: " + classicalMusic.getNameSong());
-		classicalMusic.setNameSong("Bah");
-		System.out.println("classicalMusic1: " + classicalMusic1.getNameSong());
-		System.out.println("classicalMusic: " + classicalMusic.getNameSong());
-		//
+		musicPlayer1.setVolume(22);
+		musicPlayer1.getMusicList().add(music1);
+		musicPlayer1.playMusic();
+		musicPlayer.setName("Winap");
+		musicPlayer1.playMusic();
+		System.out.println("_________________________________");
+		System.out.println(musicPlayer.getName());
 		context.close();
 	}
 
