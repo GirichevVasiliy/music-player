@@ -1,4 +1,7 @@
 package com.girichevvasiliy.musicplayer;
+
+import java.util.List;
+
 public interface Music {
-    String playSong();
+    List playSong();
 }

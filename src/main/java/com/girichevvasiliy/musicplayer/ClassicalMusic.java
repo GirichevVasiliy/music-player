@@ -1,19 +1,22 @@
 package com.girichevvasiliy.musicplayer;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-@Setter
-@Getter
-@NoArgsConstructor
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
-public class ClassicalMusic implements Music{
-    private String nameSong;
+public class ClassicalMusic implements Music {
+    public ClassicalMusic() {
+    }
+
+    private List<String> playListClassicalMusic = new ArrayList<>();
+
     @Override
-    public String playSong() {
-        return "Антонио Вивальди - Времена года";
+    public List playSong() {
+        playListClassicalMusic = List.of("Антонио Вивальди - Времена года", "Бах - Сонаты и партиты для скрипки соло",
+                "Чайковский - созвучие, стройное звучание, стройность");
+        return playListClassicalMusic;
     }
 
 }

@@ -1,6 +1,10 @@
 package com.girichevvasiliy.musicplayer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HouseMusic implements Music {
+    List<String>playListHouseMusic = new ArrayList<>();
     private HouseMusic() {
     }
     public static HouseMusic getHouseMusic(){
@@ -8,7 +12,8 @@ public class HouseMusic implements Music {
     }
 
     @Override
-    public String playSong() {
-        return "David Guetta -  I'm Good";
+    public List playSong() {
+        playListHouseMusic = List.of("David Guetta -  I'm Good");
+        return playListHouseMusic;
     }
 }
