@@ -1,18 +1,12 @@
 package com.girichevvasiliy.musicplayer;
 
-import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-@Component
 public class MusicPlayer {
-    @NonNull
     /*Подключу Lombok, для работы с классами*/
     private List<Music> musicList = new ArrayList<>();
     private Music music1;
@@ -22,11 +16,13 @@ public class MusicPlayer {
     @Value("${musicPlayer.volume}")
     private int volume;
 
-    @Autowired
     public MusicPlayer(@Qualifier("classicalMusic") Music music1, @Qualifier("rockMusic") Music music2) {
         this.music1 = music1;
         this.music2 = music2;
          }
+
+    public MusicPlayer() {
+    }
 
     public List<Music> getMusicList() {
         return musicList;
@@ -52,20 +48,17 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    /*  public MusicPlayer(Music music) {
-           musicList.add(music);
-       }
-      public void playMusic() {
-          for (Music music : musicList) {
-              String i = music.getClass().getName();
-              String[] musisType = i.split("\\.");
-              System.out.println("*****************************************************************************************************************");
-              System.out.println("Плеер " + "\"" + getName() + "\"" + " запущен, выбран жанр: " + "\"" + musisType[musisType.length - 1] + "\"," + " сейчас проиграется: " + music.playSong());
-              System.out.println("Громкость: " + getVolume() + "%");
-              System.out.println("*****************************************************************************************************************");
-          }
-      }*/
-
+/*    public void playMusic(MusicType musicType) {
+        for (Music music : musicList) {
+            String i = music.getClass().getName();
+            String[] musisType = i.split("\\.");
+            System.out.println("*****************************************************************************************************************");
+            System.out.println("Плеер " + "\"" + getName() + "\"" + " запущен, выбран жанр: " + "\"" + musisType[musisType.length - 1] + "\"," + " сейчас проиграется: " + music.playSong());
+            System.out.println("Громкость: " + getVolume() + "%");
+            System.out.println("*****************************************************************************************************************");
+        }
+    }
+}*/
     public void playMusic(MusicType musicType) {
          final int i = (int)(Math.random() * 3);
         System.out.println(i);

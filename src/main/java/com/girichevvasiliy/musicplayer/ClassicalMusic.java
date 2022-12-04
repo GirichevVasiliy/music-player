@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode
-@Component
+
 public class ClassicalMusic implements Music {
     public ClassicalMusic() {
     }
