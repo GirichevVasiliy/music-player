@@ -66,8 +66,7 @@ public class MusicPlayer {
       }*/
 
     public void playMusic(MusicType musicType) {
-        Random random = new Random();
-        int i = (int)(Math.random() * 3);
+         final int i = (int)(Math.random() * 3);
         System.out.println(i);
         if (musicType.equals(music1.getMusicType())) {
             musicList.addAll(music1.playSong());
