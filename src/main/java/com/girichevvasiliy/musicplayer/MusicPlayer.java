@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class MusicPlayer {
@@ -22,6 +23,8 @@ public class MusicPlayer {
     public MusicPlayer(@Qualifier("classicalMusic") Music music1, @Qualifier("rockMusic") Music music2) {
         this.music1 = music1;
         this.music2 = music2;
+        this.name = "AIMP";
+        this.volume = 35;
     }
 
     public List<Music> getMusicList() {
@@ -61,24 +64,26 @@ public class MusicPlayer {
               System.out.println("*****************************************************************************************************************");
           }
       }*/
-    public void playMusic() {
-        musicList.add(music1);
-        musicList.add(music2);
-        for (Music music : musicList) {
-            String i = music.getClass().getName();
-            String[] musisType = i.split("\\.");
+
+    public void playMusic(MusicType musicType) {
+        Random random = new Random();
+        int i = (int)(Math.random() * 3);
+        System.out.println(i);
+        if (musicType.equals(music1.getMusicType())) {
+            musicList.addAll(music1.playSong());
             System.out.println("*****************************************************************************************************************");
-            System.out.println("Плеер " + "\"" + getName() + "\"" + " запущен, выбран жанр: " + "\"" + musisType[musisType.length - 1] + "\"," + " сейчас проиграется: " + music.playSong());
+            System.out.println("Плеер " + "\"" + getName() + "\"" + " запущен, выбран жанр: " + "\"" + musicType + "\"," + " сейчас проиграется: " +  musicList.get(i));
+            System.out.println("Громкость: " + getVolume() + "%");
+            System.out.println("*****************************************************************************************************************");
+
+
+        } else if (musicType.equals(music2.getMusicType())) {
+            musicList.addAll(music2.playSong());
+            System.out.println("*****************************************************************************************************************");
+            System.out.println("Плеер " + "\"" + getName() + "\"" + " запущен, выбран жанр: " + "\"" + musicType + "\"," + " сейчас проиграется: " +  musicList.get(i));
             System.out.println("Громкость: " + getVolume() + "%");
             System.out.println("*****************************************************************************************************************");
         }
-    }
 
-    public void setMusic1(Music music1) {
-        this.music1 = music1;
-    }
-
-    public void setMusic2(Music music2) {
-        this.music2 = music2;
     }
 }
